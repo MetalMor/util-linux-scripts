@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# FINAL 2
+#
+# Download all files under a file structure in an Apache2 server.
+#
+# Avoids useless resources like index.html or view hooks.
+#
+# Needs <URL> parameter.
+#
+# Has not been tested on regular servers.
+#
+# 20161012 * Allows using protocols in URL.
+#
+# Written by m0R.
+#
+
+if [ ! -z "$1" -a "$1" != " " ]; then
+	wget -nH --cut-dirs=3 --recursive --no-parent --reject "index.html*" $1/
+else echo "USAGE: download <URL>";
+fi

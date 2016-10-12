@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# FINAL 1
+#
+# Recursively extract ALL .tar.gz or .tgz.
+#
+# Needs <SRC> parameter (directory under which will be the files extracted).
+#
+# The resulting files are extracted into the original directory in which
+# the compressed file was.
+#
+# It does not allow parameter-less calling.
+#
+# Written by m0R.
+#
+
+if [ "$#" -ne 1 ]; then
+	echo "USAGE: untar <SRC>";
+else 
+	for user in $( find "$1" -name "*.tar.gz" -or -name "*.tgz" ); do
+		dir=$( dirname $user );
+		tar -zxvf $user -C $dir;
+		rm $user;
+	done;
+fi

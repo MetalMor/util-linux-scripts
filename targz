@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# FINAL 2
+#
+# Creates a compressed tar file from an argument specified file name.
+#
+# Needs <FILENAME> parameter.
+#
+# 20161012 + Validates number of parameters.
+#
+# Written by m0R.
+#
+
+if [ "$#" -ne 1 ]; then
+	echo "USAGE: targz <FILENAME>"
+else
+	name=$( basename $1 )
+	tar -zcvf "$name.tar.gz" $1
+fi
+
