@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ ! $1 ] || [ -z $1 ]; then
+	HOST="localhost"
+else
+	HOST=$1
+	echo "Host: $HOST"
+fi
+if [ ! $2 ] || [ -z $2 ]; then
+	USR="root"
+else
+	USR=$2
+	echo "User: $USR"
+fi
+
+COMMAND="mysql -h $HOST -u $USR -p"
+
+echo "Running: $COMMAND"
+$COMMAND
+
+exit
