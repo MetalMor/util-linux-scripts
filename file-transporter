@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# FILE TRANSPORTER
+#
+# Move listed resources in file path parameter to
+# the specified host URI.
+
+echo "### FILE TRANSPORTER ###"
+
+if [ $# -lt 2 ]
+	then
+		echo "Needed arguments: source file and destination URI."
+		exit 1
+fi
+
+echo "Copying to $2"
+
+while read p; do
+	if [ -n "$p" ] && [[ ${p:0:1} != "#" ]]; then
+		echo "Transporting file: $p"
+		if [ -z $3 ]; then scp $p $2
+		else sshpass -p $3 scp $p $2
+		fi
+
+		if [[ $? != 0 ]]; then
+			echo "Something went wrong => scp error: $?"
+		fi
+	fi
+done < $1
+
+echo "Done! Remember to check data in destination ^^"
