@@ -5,7 +5,7 @@
 # Move listed resources in file path parameter to
 # the specified host URI.
 
-echo "### FILE TRANSPORTER ###"
+printf "### FILE TRANSPORTER ###\n\n"
 
 if [ $# -lt 2 ]
 	then
@@ -13,7 +13,8 @@ if [ $# -lt 2 ]
 		exit 1
 fi
 
-echo "Copying to $2"
+printf "Destination URI: $2\n"
+printf "File list path: $1\n\n"
 
 while read p; do
 	if [ -n "$p" ] && [[ ${p:0:1} != "#" ]]; then
@@ -28,4 +29,4 @@ while read p; do
 	fi
 done < $1
 
-echo "Done! Remember to check data in destination ^^"
+printf "\nDone! Remember to check data in destination ^^\n"
