@@ -1,6 +1,0 @@
-#!/bin/bash
-#
-# Script to update the maximum user watches for the FS. Useful for fixing some NodeJS issues.
-#
-
-echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system
